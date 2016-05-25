@@ -81,9 +81,9 @@ class FastCGIClient:
             record += chr(nLen)
         else:
             record += chr((nLen >> 24) | 0x80) \
-                     + chr((nLen >> 16) & 0xFF) \
-                     + chr((nLen >> 8) & 0xFF) \
-                     + chr(nLen & 0xFF)
+                      + chr((nLen >> 16) & 0xFF) \
+                      + chr((nLen >> 8) & 0xFF) \
+                      + chr(nLen & 0xFF)
         if vLen < 128:
             record += chr(vLen)
         else:
@@ -128,22 +128,21 @@ class FastCGIClient:
         requestId = random.randint(1, (1 << 16) - 1)
         self.requests[requestId] = dict()
         request = ""
-        beginFCGIRecordContent = chr(0)\
+        beginFCGIRecordContent = chr(0) \
                                  + chr(FastCGIClient.__FCGI_ROLE_RESPONDER) \
                                  + chr(self.keepalive) \
                                  + chr(0) * 5
         request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_BEGIN,
-                                             beginFCGIRecordContent, requestId)
+                                              beginFCGIRecordContent, requestId)
         paramsRecord = ''
         if nameValuePairs:
             for (name, value) in nameValuePairs.iteritems():
-                paramsRecord = self.__encodeNameValueParams(name, value)
-                request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)
-                # paramsRecord += self.__encodeNameValueParams(name, value)
+                # paramsRecord = self.__encodeNameValueParams(name, value)
+                # request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)
+                paramsRecord += self.__encodeNameValueParams(name, value)
 
         if paramsRecord:
-            pass
-            # request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)
+            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)
         request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, '', requestId)
 
         if post:

@@ -1,4 +1,5 @@
 from FastCGIClient import *
+
 client = FastCGIClient('127.0.0.1', 9000, 3000, 0)
 params = dict()
 documentRoot = "/Users/baidu/php_workspace"
