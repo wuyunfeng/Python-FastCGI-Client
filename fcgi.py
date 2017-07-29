@@ -19,6 +19,7 @@ def main():
     uri = parseResult.path
     query = parseResult.query
     client = FastCGIClient(host, port, 3000, 0)
+    content = ''
     if argc > 3:
         content = argvs[3]
     # content = "name=john&address=beijing"
