@@ -1,7 +1,7 @@
 
-#Python FastCGI Client
+Python FastCGI Client
 
-#####A `Python` FastCGI Client for directly access FastCGI web resource through `FastCGI`
+A `Python` FastCGI Client for directly access FastCGI web resource through `FastCGI`
 
 
 AUTHOR & Email
