@@ -3,14 +3,6 @@ Python FastCGI Client
 
 A `Python` FastCGI Client for directly access FastCGI web resource through `FastCGI`
 
-
-AUTHOR & Email
-================
-
-wuyunfeng
-    - wyfsky888@126.com
-
-
 How use?(You should start your FastCGI Process)
 ========================
 
